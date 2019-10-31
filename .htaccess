@@ -1,0 +1,14 @@
+# откл єкранизации ковычек
+php_flag magic_qoutes_gpc Off
+# Установка кодировки
+AddDefaultCharset utf-8
+# Запуск только жтого файла
+DirectoryIndex index.php
+#Включение перенаправления!
+RewriteEngine on
+# Условие запроса пользывателя если запрос не файл то перенаправить на индекс.пхп
+RewriteCond %{REQUEST_FILENAME} !-f
+# Условие запроса пользывателя если запрос не папка то перенаправить на индекс.пхп
+RewriteCond %{REQUEST_FILENAME} !-d
+# Перенаправление на этот файл
+RewriteRule ^(.*) inedx.php
