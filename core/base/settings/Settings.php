@@ -37,6 +37,11 @@ class Settings
         ]
     ];
 
+    private $teplateArr = [
+        'text' => ['name','phone', 'adress', ],
+        'textarea' => ['content', 'keywords',  ],
+    ];
+
     private function __construct()
     {
     }
@@ -47,7 +52,7 @@ class Settings
 
     static public function get($property)
     {
-        return self::$_instance->$property;
+        return self::instance()->$property;
     }
 
     static public function instance()
@@ -56,6 +61,18 @@ class Settings
             return self::$_instance;
         }
         return self::$_instance = new self;
+    }
+
+    public function  clueProperties($class) {
+        $baseProperties = [];
+
+        foreach($this as $name => $item) {
+            $property = $class::get($name);
+          if (is_array($property) && is_array($item)) {
+              $newProperty = array_merge_recursive($n1, $n2);
+          }
+        }
+        exit();
     }
 
 }
